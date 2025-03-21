@@ -1,0 +1,42 @@
+﻿:root {
+    --primary-gradient: linear-gradient(135deg, #6a11cb, #2575fc);
+    --dark-bg: #0f172a;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+}
+
+body {
+    background: var(--dark-bg) url('https://images.unsplash.com/photo-1589998521214-a9d9d2e4d36e') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.gradient-text {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.signal-item {
+    transition: transform 0.3s ease;
+}
+
+.signal-item:hover {
+    transform: scale(1.02);
+}

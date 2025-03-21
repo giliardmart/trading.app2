@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradingPro</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen flex items-center justify-center">
+    <!-- Login Page -->
+    <div id="loginPage" class="glass-panel p-8 rounded-lg max-w-md w-full space-y-6 fade-in">
+        <h1 class="text-4xl font-bold text-center gradient-text">TradingPro</h1>
+        <input type="email" id="userEmail" placeholder="Seu Email" 
+               class="w-full px-5 py-3 bg-transparent border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 transition duration-200">
+        <input type="password" id="userPassword" placeholder="Sua Senha" 
+               class="w-full px-5 py-3 bg-transparent border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 transition duration-200">
+        <button onclick="handleLogin()" 
+                class="w-full bg-gradient-to-r from-purple-600 to-blue-600 py-3 rounded-lg hover:opacity-90 transition duration-200 font-medium">
+            Entrar
+        </button>
+        <p id="errorMessage" class="text-red-500 text-sm text-center"></p>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="hidden glass-panel p-6 rounded-lg max-w-md mx-auto mt-20 space-y-4">
+        <h2 class="text-xl font-semibold text-center gradient-text">Cadastro de Usuários</h2>
+        <input type="email" id="newUserEmail" placeholder="Email do Novo Usuário" 
+               class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+        <button onclick="registerUser()" 
+                class="w-full bg-gradient-to-r from-purple-600 to-blue-600 py-3 rounded-lg hover:opacity-90 transition duration-200">
+            Cadastrar Usuário
+        </button>
+        <p id="adminMessage" class="text-green-500 text-sm text-center"></p>
+    </div>
+
+    <!-- Main Page -->
+    <div id="mainPage" class="hidden">
+        <nav class="fixed top-0 w-full bg-gray-900 bg-opacity-80 p-4">
+            <div class="max-w-4xl mx-auto flex justify-between items-center">
+                <h1 class="text-xl font-semibold gradient-text">TradingPro</h1>
+                <button onclick="logout()" class="bg-red-600 px-4 py-2 rounded-lg hover:bg-red-700 transition duration-200">
+                    Sair
+                </button>
+            </div>
+        </nav>
+        <div class="max-w-4xl mx-auto p-6 mt-20 space-y-6">
+            <!-- Asset Selection -->
+            <div class="glass-panel p-6 rounded-lg space-y-4">
+                <h2 class="text-2xl font-semibold gradient-text">Selecione os Ativos</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" value="EUR/USD" class="asset-checkbox">
+                        <span>EUR/USD</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" value="GBP/USD" class="asset-checkbox">
+                        <span>GBP/USD</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" value="USD/JPY" class="asset-checkbox">
+                        <span>USD/JPY</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" value="XAU/USD" class="asset-checkbox">
+                        <span>XAU/USD</span>
+                    </label>
+                </div>
+                <div>
+                    <select id="timeframe" class="w-full px-4 py-2 bg-gray-800 rounded-lg">
+                        <option value="1">1 Minuto</option>
+                        <option value="5">5 Minutos</option>
+                    </select>
+                </div>
+                <button onclick="startSignalGenerator()" 
+                        class="w-full bg-gradient-to-r from-purple-600 to-blue-600 py-3 rounded-lg hover:opacity-90 transition duration-200 font-medium">
+                    Iniciar Sinais
+                </button>
+            </div>
+            <!-- Signal History -->
+            <div class="glass-panel p-6 rounded-lg max-h-[300px] overflow-y-auto">
+                <h2 class="text-2xl font-semibold gradient-text mb-4">Histórico de Sinais</h2>
+                <div id="signalHistory" class="space-y-4"></div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
